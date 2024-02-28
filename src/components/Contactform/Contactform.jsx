@@ -1,7 +1,6 @@
 import css from './Contactform.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { nanoid } from 'nanoid';
 import { useId } from 'react';
 import { useDispatch } from 'react-redux';
 import { addbutton } from '../../redux/contactsSlice';
@@ -14,7 +13,7 @@ export const Contactform = () => {
   const namefield = useId();
   const phonefield = useId();
   const handleSubmit = (values, actions) => {
-    dispatch(addbutton({ id: nanoid(), ...values }));
+    dispatch(addbutton({ id: Date.now(), ...values }));
     actions.resetForm();
   };
   return (
@@ -28,7 +27,6 @@ export const Contactform = () => {
         <Form className={css.form}>
           <div className={css.namebox}>
             <label htmlFor={namefield} className={css.nametext}>
-              {' '}
               Name
             </label>
             <Field type="text" name="name" id={namefield} className={css.fieldname} />

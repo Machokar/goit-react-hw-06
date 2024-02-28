@@ -4,6 +4,7 @@ import { deletbutton } from '../../redux/contactsSlice';
 
 export const Contact = ({ name, number, id }) => {
   const dispatch = useDispatch();
+
   return (
     <>
       <div className={css.namenumber}>

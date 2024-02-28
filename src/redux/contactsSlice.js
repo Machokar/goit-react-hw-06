@@ -13,18 +13,20 @@ const contactsSlice = createSlice({
   },
   reducers: {
     addbutton: (state, action) => {
-      state.items.push(action.payload);
+      state.items = [...state.items, action.payload];
     },
     deletbutton: (state, action) => {
-      return state.items.filter(contact => contact.id !== action.payload);
+      state.items = state.items.filter(contact => contact.id !== action.payload);
     },
   },
 });
 export const { addbutton, deletbutton } = contactsSlice.actions;
-export const contactsSliceReducer = contactsSlice.reducer;
 const persistConfig = {
   key: 'contacts',
   storage,
   whitelist: ['items'],
 };
-export const contactsReducer = persistReducer(persistConfig, contactsSlice.reducer);
+
+const contactsReducer = persistReducer(persistConfig, contactsSlice.reducer);
+export default contactsReducer;
+export const getContacts = state => state.contacts.items;
