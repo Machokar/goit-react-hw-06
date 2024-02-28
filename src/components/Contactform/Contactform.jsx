@@ -1,24 +1,29 @@
 import css from './Contactform.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { nanoid } from 'nanoid';
 import { useId } from 'react';
+import { useDispatch } from 'react-redux';
+import { addbutton } from '../../redux/contactsSlice';
 const userSchema = Yup.object().shape({
   name: Yup.string().min(5, 'To short').max(50, 'To long').required('This is a required field'),
   number: Yup.string().min(5, 'To short').max(50, 'To long').required('This is a required field'),
 });
-export const Contactform = ({ addusers }) => {
+export const Contactform = () => {
+  const dispatch = useDispatch();
   const namefield = useId();
   const phonefield = useId();
+  const handleSubmit = (values, actions) => {
+    dispatch(addbutton({ id: nanoid(), ...values }));
+    actions.resetForm();
+  };
   return (
     <>
       <h1 className={css.phonebook}>Phonebook</h1>
       <Formik
         initialValues={{ name: '', number: '' }}
         validationSchema={userSchema}
-        onSubmit={(values, actions) => {
-          addusers({ id: Date.now(), ...values });
-          actions.resetForm();
-        }}
+        onSubmit={handleSubmit}
       >
         <Form className={css.form}>
           <div className={css.namebox}>
