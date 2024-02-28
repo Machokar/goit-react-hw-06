@@ -1,0 +1,11 @@
+.model {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  flex-wrap: wrap;
+}
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
