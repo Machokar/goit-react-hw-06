@@ -1,5 +1,5 @@
 import './App.css';
-import { Contactlist } from './components/Contactlist/Contactlist';
+import { ContactList } from './components/Contactlist/Contactlist';
 import { Searchbox } from './components/Searchbox/Searchbox';
 import { Contactform } from './components/Contactform/Contactform';
 
@@ -8,7 +8,7 @@ export const App = () => {
     <div>
       <Contactform />
       <Searchbox />
-      <Contactlist />
+      <ContactList />
     </div>
   );
 };
