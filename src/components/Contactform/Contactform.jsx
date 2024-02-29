@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useId } from 'react';
 import { useDispatch } from 'react-redux';
-import { addbutton } from '../../redux/contactsSlice';
+import { addContact } from '../../redux/contactsSlice';
 const userSchema = Yup.object().shape({
   name: Yup.string().min(5, 'To short').max(50, 'To long').required('This is a required field'),
   number: Yup.string().min(5, 'To short').max(50, 'To long').required('This is a required field'),
@@ -13,7 +13,7 @@ export const Contactform = () => {
   const namefield = useId();
   const phonefield = useId();
   const handleSubmit = (values, actions) => {
-    dispatch(addbutton({ id: Date.now(), ...values }));
+    dispatch(addContact({ id: Date.now(), ...values }));
     actions.resetForm();
   };
   return (

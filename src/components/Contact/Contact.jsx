@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import css from './Contact.module.css';
-import { deletbutton } from '../../redux/contactsSlice';
+import { deleteContact } from '../../redux/contactsSlice';
 
 export const Contact = ({ name, number, id }) => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ export const Contact = ({ name, number, id }) => {
         <p className={css.number}>{number}</p>
       </div>
       <div>
-        <button onClick={() => dispatch(deletbutton(id))} className={css.button}>
+        <button onClick={() => dispatch(deleteContact(id))} className={css.button}>
           Delete
         </button>
       </div>

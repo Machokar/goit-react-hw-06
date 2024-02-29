@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import css from './Searchbox.module.css';
-import { setFilter } from '../../redux/filtersSlice';
+import { changeFilter } from '../../redux/filtersSlice';
 export const Searchbox = () => {
   const dispatch = useDispatch();
   return (
@@ -10,7 +10,7 @@ export const Searchbox = () => {
         type="text"
         className={css.searchbar}
         onChange={evt => {
-          dispatch(setFilter(evt.target.value));
+          dispatch(changeFilter(evt.target.value));
         }}
       />
     </div>
