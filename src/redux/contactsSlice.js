@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import persistReducer from 'redux-persist/es/persistReducer';
-import storage from 'redux-persist/lib/storage';
+
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
@@ -16,12 +15,6 @@ const contactsSlice = createSlice({
   },
 });
 export const { addContact, deleteContact } = contactsSlice.actions;
-const persistConfig = {
-  key: 'contacts',
-  storage,
-  whitelist: ['items'],
-};
-
-const contactsReducer = persistReducer(persistConfig, contactsSlice.reducer);
+const contactsReducer = contactsSlice.reducer;
 export default contactsReducer;
 export const selectContacts = state => state.contacts.items;
